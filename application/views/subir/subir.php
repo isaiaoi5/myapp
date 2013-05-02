@@ -22,7 +22,7 @@ $(document).ready(function() {
     <div class="alert alert-info">
         <a class="close" data-dismiss="alert">&times;</a>
         <h1>
-            Libros
+            Libros seguros
         </h1>
     </div>
 </div>
