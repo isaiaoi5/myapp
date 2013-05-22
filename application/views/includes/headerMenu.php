@@ -1,6 +1,6 @@
 <?php
     $is_logged_in = $this->session->userdata('is_logged_in');
-    $id_usuario = $this->session->userdata('id');
+    $id_usuario   = $this->session->userdata('id');
     $tipoUsuario  = $this->session->userdata('tipoUsuario');
     if ($is_logged_in != TRUE or $id_usuario == '') {
         redirect('login/index');
@@ -8,7 +8,8 @@
 ?>
 
 <body>
-    <div align="center">
+    <div class="container-fluid">
+        <div class="span12 well">
         <script type="text/javascript">
             $('.carousel').carousel({
             interval: 2000
@@ -26,6 +27,7 @@
                 <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
                 <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
             </div>
+        </div>
     </div>
 
 <?php
@@ -56,16 +58,19 @@
             <div class="span3">
                 <div class="well sidebar-nav">
                     <ul class="nav nav-list">
-                        <li class="nav-header">Libro</li>
-                        <li id="registrar" class="active"><?php echo anchor('libro/registrar', 'Registrar'); ?></li>
-                        <li id="mostrar"><?php echo anchor('libro/mostrar', 'Mostrar'); ?></li>
-                        <li class="nav-header">Autor</li>
-                        <li><?php echo anchor('autor/registrar', 'Registrar Nuevo Autor'); ?></li>
-                        <li class="nav-header">Editorial</li>
-                        <li><?php echo anchor('editorial/registrar', 'Registrar Nuevo Editorial'); ?></li>
-                        <li class="nav-header">Usuarios</li>
-                        <li><?php echo anchor('prestar/buscarSolicitud', 'Ver Solicitudes Por Usuario'); ?></li>
-                        <li><?php echo anchor('subir/subir', 'Ver Solicitudes Por Usuario'); ?></li>
+                        <li class="nav-header"><h3>Biblioteca</h3></li>
+                            <li id="registrar" class="active"><?php echo anchor('libro/registrar', 'Registrar'); ?></li>
+                            <li><?php echo anchor('prestar/buscarSolicitud', 'Prestar Libro'); ?></li>
+                            <li id="mostrar"><?php echo anchor('libro/mostrar', 'Mostrar'); ?></li>
+                        <li class="nav-header"><h3>Biblioteca Virtual</h3></li>                        
+                            <li id="subirLibroDigital"><?php echo anchor('subirLibro/digital', 'Subir Libro'); ?></li>
+                            <li id="mostrarLibroDigital"><?php echo anchor('subirLibro/mostrarDigital', 'Mostar Material Digital'); ?></li>
+                        <li class="nav-header"><h3>Autor</h3></li>
+                            <li><?php echo anchor('autor/registrar', 'Registrar Nuevo Autor'); ?></li>
+                        <li class="nav-header"><h3>Editorial</h3></li>
+                            <li><?php echo anchor('editorial/registrar', 'Registrar Nueva Editorial'); ?></li>
+                        <li class="nav-header"><h3>Usuarios</h3></li>
+                            <li><?php echo anchor('usuario/registrar', 'Registrar Nuevo Usuario'); ?></li>
                     </ul>
                 </div><!--/.well -->
             </div><!--/span-->

@@ -8,10 +8,10 @@ class Login_model extends CI_Model{
         $this->db->where('login', $username);
         $this->db->where('password', $password);
         $query = $this->db->get('usuario');
-        if($query->num_rows() > 0){
+        if($query->num_rows() > 0){            
             return $query->result();
         }else{
-            return false;
+            return FALSE;
         }
     }
 }

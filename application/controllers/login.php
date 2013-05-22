@@ -1,9 +1,9 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 class Login extends CI_Controller{
     function __construct() {
-        parent::__construct(); 
-        $this->load->model('Login_model');
+        parent::__construct();         
         $this->load->model('Usuario_model');
+        $this->load->model('Login_model');
         $this->load->helper('form');
         $this->load->library('form_validation');
     }
@@ -18,7 +18,7 @@ class Login extends CI_Controller{
     
     function verificar_login() {
         $this->form_validation->set_rules('username', 'Nombre de Usuario', 'required|trim|alpha|callback__username_check');
-        $this->form_validation->set_rules('password', 'Password', 'required|trim|alpha_numeric|callback__password_check');
+        $this->form_validation->set_rules('password', 'Password', 'required|trim|alpha_numeric|md5|callback__password_check');
         $this->form_validation->set_message('required', 'El %s es requerido');
         $this->form_validation->set_message('alpha', 'El %s solo permite Letras');
         $this->form_validation->set_message('alpha_numeric', 'El %s solo permite letras y números');
@@ -33,14 +33,15 @@ class Login extends CI_Controller{
             if ($login) {
                 $data = array(
                     'is_logged_in'      => TRUE,
-                    'nombre_usuario'    => $login[0]->nombre,
+                    'nombre_usuario'    => $login[0]->login,
                     'nombre'            => $login[0]->nombre,
                     'id'                => $login[0]->idUsuario,
                     'tipoUsuario'       => $login[0]->tipoUsuario,
                 );
                 $this->session->set_userdata($data);
                 redirect('principal');
-            } else {                
+            } else {     
+                echo "<h1>Error</h1>";
                 $this->index();
             }
         }
