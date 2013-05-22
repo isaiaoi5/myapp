@@ -6,11 +6,32 @@
         redirect('login/index');
     }
 ?>
+
+<body>
+    <div align="center">
+        <script type="text/javascript">
+            $('.carousel').carousel({
+            interval: 2000
+            })
+        </script>
+            <div id="myCarousel" class="carousel">
+                <!-- Carousel items -->
+                <div class="carousel-inner">
+                    <div class="active item"><img src="<?php echo base_url(); ?>images/upds2.jpg" alt="" width="923px" height="200px"/></div>
+                    <div class="item"><img src="<?php echo base_url(); ?>images/upds5.jpg" alt="" width="923px" height="200px"/></div>
+                    <div class="item"><img src="<?php echo base_url(); ?>images/upds3.jpg" alt="" width="923px" height="200px"/></div>
+                    <div class="item"><img src="<?php echo base_url(); ?>images/upds4.jpg" alt="" width="923px" height="200px"/></div>
+                </div>
+                <!-- Carousel nav -->
+                <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+                <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
+            </div>
+    </div>
+
 <?php
     if ($tipoUsuario == 'Administrador' ){
 ?>
-<body>
-    <div class="navbar navbar-fixed-top">
+    <div class="navbar navbar-fixed-top">        
         <div class="navbar-inner navbar-fixed-top">
             <div class="container-fluid">
                 <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
@@ -55,7 +76,6 @@
     if ($tipoUsuario == 'Alumno' ){
 ?>
 
-<body>
     <div class="navbar navbar-fixed-top">
         <div class="navbar-inner navbar-fixed-top">
             <div class="container-fluid">

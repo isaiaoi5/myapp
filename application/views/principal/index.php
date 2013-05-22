@@ -6,14 +6,11 @@
     }
 ?>
 <div class="span8 well">
-    <div class="alert alert-info">
-        <a class="close" data-dismiss="alert">&times;</a>
+    <div class="alert alert-info">        
+        <?php echo anchor('login/logout', '&times;','class = "close" data-dismiss="alert"'); ?>
         <h1>
-            BIENVENIDO
+            BIENVENIDO <?php echo strtoupper($this->session->userdata('nombre')); ?> USTED A INGRESADO COMO <?php echo strtoupper($this->session->userdata('tipoUsuario')); ?>
         </h1>
-        <p>
-            <?php echo anchor('libro/registrar', 'Registrar Nuevo Libro'); ?>
-        </p>
     </div>
     <blockquote>
         Biblioteca de la Universida Privada Domingo Savio Potosí

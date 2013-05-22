@@ -14,4 +14,24 @@ class Usuario_model extends CI_Model{
         return $data;
     }
     
+    function username_check($value){
+        $this->db->where('login', $value);
+        $query = $this->db->get('usuario');
+        if($query->num_rows() > 0){
+            return TRUE;
+        }else{
+            return FALSE;
+        }
+    }
+    
+    function password_check($value){
+        $this->db->where('password', $value);
+        $query = $this->db->get('usuario');
+        if($query->num_rows() > 0){
+            return TRUE;
+        }else{
+            return FALSE;
+        }
+    }
+    
 }

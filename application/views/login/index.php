@@ -89,7 +89,6 @@
                                 ?>
                             </p>
                             <p class="change_link">
-                                Todavia no eres un Mienbro
                                 <a href="http://www.updspotosi.edu.bo" class="to_register">Unetenos</a>
                             </p>
                             <?php echo form_close(); ?>

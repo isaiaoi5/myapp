@@ -3,6 +3,7 @@ class Login extends CI_Controller{
     function __construct() {
         parent::__construct(); 
         $this->load->model('Login_model');
+        $this->load->model('Usuario_model');
         $this->load->helper('form');
         $this->load->library('form_validation');
     }
@@ -16,8 +17,13 @@ class Login extends CI_Controller{
     }
     
     function verificar_login() {
-        $this->form_validation->set_rules('username', 'No se permiten numeros', 'required|trim|alpha');
-        $this->form_validation->set_rules('password', 'No se permiten caracteres especiales', 'required|trim|alpha_numeric');
+        $this->form_validation->set_rules('username', 'Nombre de Usuario', 'required|trim|alpha|callback__username_check');
+        $this->form_validation->set_rules('password', 'Password', 'required|trim|alpha_numeric|callback__password_check');
+        $this->form_validation->set_message('required', 'El %s es requerido');
+        $this->form_validation->set_message('alpha', 'El %s solo permite Letras');
+        $this->form_validation->set_message('alpha_numeric', 'El %s solo permite letras y números');
+        $this->form_validation->set_message('_username_check', 'el %s no es correcto');
+        $this->form_validation->set_message('_password_check', 'el %s no es correcto');
         if ($this->form_validation->run() == false) {
             $this->index();
         } else {
@@ -34,9 +40,18 @@ class Login extends CI_Controller{
                 );
                 $this->session->set_userdata($data);
                 redirect('principal');
-            } else {
+            } else {                
                 $this->index();
             }
         }
     }
+    
+    function _username_check($value){
+        return $this->Usuario_model->username_check($value);
+    }
+    
+    function _password_check($value){
+        return $this->Usuario_model->password_check($value);;
+    }
+    
 }
